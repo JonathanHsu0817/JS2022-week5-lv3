@@ -1,0 +1,182 @@
+---
+title: Boostrap Index
+layout: ./app/layout.ejs
+engine: ejs
+current: index
+---
+
+<section class="addticket-area">
+  <div class="container">
+    <div class="row background-shadow justify-content-center">
+      <div class="col-lg-10 d-flex justify-content-center flex-wrap">
+        <div class="picture col-lg-6">
+          <img class="img-fluid" src="./assets/images/logo.png" alt="logo">
+          <img class="img-fluid" src="./assets/images/main_img.png" alt="main_pic">
+        </div>
+        <form action="" class="addticket-form col-lg-6 col-12">
+          <h1 class="fs-1 text-primary fw-bold pb-1 border-bottom border-3 border-primary mb-7"><i class="fas fa-plus-circle"></i>
+          新增旅遊套票</h1>
+          <div class="form-group">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <label for="ticketName" class="text-primary fw-bold">套票名稱</label>
+              <input type="text" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketName" placeholder="請填寫套票名稱">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <label for="ticketUrl" class="text-primary fw-bold">圖片網址</label>
+              <input type="text" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketUrl" placeholder="請填寫圖片網址">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <label for="ticketPlace" class="text-primary fw-bold">景點地區</label>
+              <select name="ticketPlace" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketPlace">
+                <option selected>請選擇景點地區</option>
+                <option value="Taipei">台北</option>
+                <option value="Taichung">台中</option>
+                <option value="Kaohsiung">高雄</option>
+              </select>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <label for="ticketName" class="text-primary fw-bold">套票金額</label>
+              <input type="number" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketName" placeholder="請填寫套票金額">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <label for="ticketNum" class="text-primary fw-bold">套票組數</label>
+              <input type="number" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketNum" placeholder="請填寫套票組數">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <label for="ticketStar" class="text-primary fw-bold">套票星級</label>
+              <input type="number" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketStar" placeholder="請填寫套票星級">
+            </div>
+            <div class="d-flex justify-content-between mb-6">
+              <label for="ticketDes" class="text-primary fw-bold mt-2">套票描述</label>
+              <textarea class="addticket-input border-bottom border-primary col-9 py-2 px-3" name="ticketDes" id="ticketDes" cols="10" rows="4" placeholder="請填寫套票描述(限定100字)"></textarea>
+            </div>
+          </div>
+          <div class="d-flex">
+            <a href="#" class="btn btn-primary btn-add-size ms-auto">新增套票</a>
+          </div>
+        </form>
+      </div>
+  </div>
+</section>
+<section class="search bg-light pt-10">
+  <div class="container">
+    <div class="row align-items-center pb-8">
+      <div class="col-3 offset-1">
+        <label for="searchPlace"></label>
+        <select name="searchPlace" class="search-input col-11 py-2 px-3" id="searchPlace">
+          <option selected>地區搜尋</option>
+          <option value="台北">台北</option>
+          <option value="台中">台中</option>
+          <option value="高雄">高雄</option>
+        </select>
+      </div>
+      <div class="search-num col-6">
+        <p class="search-text mb-0">本次搜尋共 6 筆資料</p>
+      </div>
+    </div>
+    <div class="row search-place flex-wrap">
+      <div class="col-lg-4 mb-8">
+        <div class="card shadow d-flex flex-column h-100">
+          <div class="search-picture position-relative">
+            <div class="place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5">台北</div>
+            <div class="place-rate bg-primary text-white rounded-end position-absolute py-1 px-2">8.6</div>
+            <a href="#" class="d-block overflow-hidden"><img src="./assets/images/travel_1.png" class="card-img-top  object-fix-cover" alt="travel_1.png"></a>
+          </div>
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4"><a href="#" class="text-decoration-none">綠島自由行套裝行程</a></h2>
+              <p class="card-text text-gray">嚴選超高CP值綠島自由行套裝行程，多種綠島套裝組合，提供台東綠島來回船票、綠島環島機車、綠島民宿住宿，行程加贈『綠島浮潛體驗』以及『綠島生態導覽』，讓你用輕鬆的綠島套裝自由行，也能深度認識綠島在地文化。</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="text-primary fw-bold"><i class="fas fa-exclamation-circle me-1"></i>剩下最後 8 組</div>
+                <div class="d-flex align-items-center text-primary fw-bold">TWD<span class="fs-7 ms-1">$1,280</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-8">
+        <div class="card shadow flex-column h-100">
+          <div class="search-picture position-relative">
+            <div class="place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5">台北</div>
+            <div class="place-rate bg-primary text-white rounded-end position-absolute py-1 px-2">8.2</div>
+            <a href="#" class="d-block overflow-hidden"><img src="./assets/images/travel_4.png" class="card-img-top  object-fix-cover" alt="travel_4.png"></a>
+          </div>
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4"><a href="#" class="text-decoration-none">清境高空觀景步道二日遊</a></h2>
+              <p class="card-text text-gray">清境農場青青草原數十公頃碧草，餵食著數以百計的綿羊和牛群，中央山脈最高的北三段群峰形成一堵如帶的高牆，攔住清晨的薄霧山嵐，成就了從花蓮翻山而來的雲瀑在濁水溪谷積成雲海，這些景觀豐沛了清境觀景步道的風格，也涵養它無可取代的特色。</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="text-primary fw-bold"><i class="fas fa-exclamation-circle me-1"></i>剩下最後 12 組</div>
+                <div class="d-flex align-items-center text-primary fw-bold">TWD<span class="fs-7 ms-1">$2,580</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-8">
+        <div class="card shadow flex-column h-100">
+          <div class="search-picture position-relative">
+            <div class="place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5">台北</div>
+            <div class="place-rate bg-primary text-white rounded-end position-absolute py-1 px-2">9.2</div>
+            <a href="#" class="d-block overflow-hidden"><img src="./assets/images/travel_6.png" class="card-img-top  object-fix-cover" alt="travel_6.png"></a>
+          </div>
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4"><a href="#" class="text-decoration-none">南庄度假村露營車二日遊</a></h2>
+              <p class="card-text text-gray">南庄雲水豪華露營車，快來擁有最愜意的露營體驗吧！<br> 一泊一食，輕鬆享受露營車樂趣。<br> 獨立衛浴與私人戶外露臺。<br> 入住豪華露營車還能使用戶外SPA大眾湯，感受美人湯魅力。</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="text-primary fw-bold"><i class="fas fa-exclamation-circle me-1"></i>剩下最後 2 組</div>
+                <div class="d-flex align-items-center text-primary fw-bold">TWD<span class="fs-7 ms-1">$2,480</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card shadow flex-column h-100">
+          <div class="search-picture position-relative">
+            <div class="place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5">台中</div>
+            <div class="place-rate bg-primary text-white rounded-end position-absolute py-1 px-2">9.2</div>
+            <a href="#" class="d-block overflow-hidden"><img src="./assets/images/travel_3.png" class="card-img-top  object-fix-cover" alt="travel_3.png"></a>
+          </div>
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4"><a href="#" class="text-decoration-none">山林悠遊雙人套票</a></h2>
+              <p class="card-text text-gray">山林悠遊套票，結合南投清境高空步道、雙龍瀑布七彩吊橋、瑞龍瀑布園區之熱門景點，帶您飽覽南投瑰麗的自然環境，體驗變化無窮的地形景觀，喜歡挑戰高空的您一定不可錯過。 <br>（含雙龍瀑布入場券 x2）</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="text-primary fw-bold"><i class="fas fa-exclamation-circle me-1"></i>限時搶購</div>
+                <div class="d-flex align-items-center text-primary fw-bold">TWD<span class="fs-7 ms-1">$880</span></div>
+            </div>
+          </div>
+        </div> 
+      </div>
+      <div class="col-lg-4">
+        <div class="card shadow flex-column h-100">
+          <div class="search-picture position-relative">
+            <div class="place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5">台中</div>
+            <div class="place-rate bg-primary text-white rounded-end position-absolute py-1 px-2">8.2</div>
+            <a href="#" class="d-block overflow-hidden"><img src="./assets/images/travel_2.png" class="card-img-top  object-fix-cover" alt="travel_2.png"></a>
+          </div>
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4"><a href="#" class="text-decoration-none">漁樂碼頭釣魚體驗套票</a></h2>
+              <p class="card-text text-gray">台中全新親子景點寶熊漁樂碼頭，為知名釣具公司「OKUMA」所創立的觀光工廠。一樓藍白希臘漁村風商店街免費參觀。二樓釣魚故事館則設立全台唯一虛擬釣場，透過導覽讓你知道如何釣魚、魚餌怎麼區分，寓教於樂的台中景點！ <br>（含雙龍瀑布入場券 x2）</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="text-primary fw-bold"><i class="fas fa-exclamation-circle me-1"></i>剩下最後 5 組</div>
+                <div class="d-flex align-items-center text-primary fw-bold">TWD<span class="fs-7 ms-1">$1,280</span></div>
+            </div>
+          </div>
+        </div> 
+      </div>
+      <div class="col-lg-4">
+        <div class="card shadow flex-column h-100">
+          <div class="search-picture position-relative">
+            <div class="place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5">高雄</div>
+            <div class="place-rate bg-primary text-white rounded-end position-absolute py-1 px-2">8.6</div>
+            <a href="#" class="d-block overflow-hidden"><img src="./assets/images/travel_5.png" class="card-img-top  object-fix-cover" alt="travel_5.png"></a>
+          </div>
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4"><a href="#" class="text-decoration-none">熊森公園親子二日遊套票</a></h2>
+              <p class="card-text text-gray">來自日本最受歡迎的兒童遊樂園《 BearSon Park 熊森公園》於全世界有800多家據點，在全世界、日本及台灣，很多小孩的童年都在遊戲愛樂園裡一同成長，提供兒童一個最富教育性及娛樂性的休憩遊樂天地！</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="text-primary fw-bold"><i class="fas fa-exclamation-circle me-1"></i>剩下最後 2 組</div>
+                <div class="d-flex align-items-center text-primary fw-bold">TWD<span class="fs-7 ms-1">$2,480</span></div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</section>
