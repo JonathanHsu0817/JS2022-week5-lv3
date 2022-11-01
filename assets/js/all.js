@@ -34,7 +34,7 @@ var card = document.querySelector(".search-place");
 var searchSelection = document.querySelector("#searchPlace");
 var str = "";
 var searchText = "<p class=\"search-text mb-0\">\u672C\u6B21\u641C\u5C0B\u5171 ".concat(data.length, " \u7B46\u8CC7\u6599</p>");
-searchNum.innerHTML = searchText;
+searchNum.innerHTML = searchText; //預設載入
 
 function init() {
   data.forEach(function (item) {
@@ -44,19 +44,58 @@ function init() {
   });
 }
 
-init();
+init(); //篩選器邏輯
+
 searchSelection.addEventListener('change', research);
 
 function research(e) {
   // console.log(e.target.value);
+  str = "";
   data.forEach(function (item) {
     var cardContent = "<div class=\"col-lg-4 mb-8\">\n  <div class=\"card shadow d-flex flex-column h-100\">\n    <div class=\"search-picture position-relative\">\n      <div class=\"place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5\">".concat(item.area, "</div>\n      <div class=\"place-rate bg-primary text-white rounded-end position-absolute py-1 px-2\">").concat(item.rate, "</div>\n      <a href=\"#\" class=\"d-block overflow-hidden\"><img src=\"").concat(item.imgUrl, "\" class=\"card-img-top  object-fix-cover\" alt=\"travel_1.png\"></a>\n    </div>\n      <div class=\"card-body d-flex flex-column\">\n        <h2 class=\"card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4\"><a href=\"#\" class=\"text-decoration-none\">").concat(item.name, "</a></h2>\n        <p class=\"card-text text-gray\">").concat(item.description, "</p>\n        <div class=\"d-flex justify-content-between align-items-center mt-auto\">\n          <div class=\"text-primary fw-bold\"><i class=\"fas fa-exclamation-circle me-1\"></i>\u5269\u4E0B\u6700\u5F8C ").concat(item.group, " \u7D44</div>\n          <div class=\"d-flex align-items-center text-primary fw-bold\">TWD<span class=\"fs-7 ms-1\">").concat(item.price, "</span></div>\n      </div>\n    </div>\n  </div>\n</div>");
 
-    if (e.target.value == item.area) {
+    if (e.target.value === "地區搜尋") {
+      str += cardContent;
+    } else if (e.target.value === item.area) {
       str += cardContent;
     }
 
     card.innerHTML = str;
   });
+} //新增邏輯
+
+
+var ticketName = document.querySelector("#ticketName");
+var ticketUrl = document.querySelector("#ticketUrl");
+var ticketRegion = document.querySelector("#ticketRegion");
+var ticketPrice = document.querySelector("#ticketPrice");
+var ticketNum = document.querySelector("#ticketNum");
+var ticketStar = document.querySelector("#ticketStar");
+var ticketDescription = document.querySelector("#ticketDescription");
+var addTicketBtn = document.querySelector("#addTicketBtn");
+var obj = {};
+
+function addData() {
+  obj.id = data.length;
+  obj.name = ticketName.value;
+  obj.imgUrl = ticketUrl.value;
+  obj.area = ticketRegion.value;
+  obj.description = ticketDescription.value;
+  obj.group = ticketNum.value;
+  obj.price = ticketPrice.value;
+  obj.rate = ticketStar.value; // console.log(obj);
+
+  data.push(obj);
+  init();
+  cleanWrittenData();
 }
+
+function cleanWrittenData() {
+  obj = {};
+}
+
+addTicketBtn.addEventListener("click", function (e) {
+  // console.log(ticketName.value);
+  addData();
+});
 //# sourceMappingURL=all.js.map
