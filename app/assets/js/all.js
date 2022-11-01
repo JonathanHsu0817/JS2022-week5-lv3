@@ -42,6 +42,7 @@ let str="";
 let searchText = `<p class="search-text mb-0">本次搜尋共 ${data.length} 筆資料</p>`
 searchNum.innerHTML = searchText;
 
+//預設載入
 function init(){
   data.forEach(item=>{
     let cardContent = `<div class="col-lg-4 mb-8">
@@ -68,10 +69,12 @@ function init(){
 
 init();
 
+//篩選器邏輯
 searchSelection.addEventListener('change',research);
 
 function research(e){
   // console.log(e.target.value);
+  str="";
   data.forEach(item =>{
     let cardContent = `<div class="col-lg-4 mb-8">
   <div class="card shadow d-flex flex-column h-100">
@@ -90,10 +93,55 @@ function research(e){
     </div>
   </div>
 </div>`;
-    if(e.target.value==item.area){
+    if(e.target.value === "地區搜尋"){
+      str+=cardContent;
+    }else if(e.target.value === item.area){
       str+=cardContent;
     }
     card.innerHTML = str;
   })
 }
 
+//新增邏輯
+const ticketName = document.querySelector("#ticketName");
+
+const ticketUrl = document.querySelector("#ticketUrl"); 
+
+const ticketRegion = document.querySelector("#ticketRegion");
+
+const ticketPrice = document.querySelector("#ticketPrice");
+
+const ticketNum = document.querySelector("#ticketNum");
+
+const ticketStar = document.querySelector("#ticketStar");
+
+const ticketDescription = document.querySelector("#ticketDescription");
+
+const addTicketBtn = document.querySelector("#addTicketBtn");
+
+let obj = {};
+
+function addData(){
+  obj.id= data.length;
+  obj.name = ticketName.value;
+  obj.imgUrl = ticketUrl.value;
+  obj.area = ticketRegion.value;
+  obj.description = ticketDescription.value;
+  obj.group = ticketNum.value;
+  obj.price = ticketPrice.value;
+  obj.rate = ticketStar.value;
+  // console.log(obj);
+  data.push(obj);
+  init();
+  cleanWrittenData();
+}
+
+function cleanWrittenData(){
+  obj={};
+}
+
+addTicketBtn.addEventListener("click", (e) =>{
+  // console.log(ticketName.value);
+  addData();
+
+})

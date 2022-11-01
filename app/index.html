@@ -26,17 +26,17 @@ current: index
               <input type="text" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketUrl" placeholder="請填寫圖片網址">
             </div>
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <label for="ticketPlace" class="text-primary fw-bold">景點地區</label>
-              <select name="ticketPlace" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketPlace">
+              <label for="ticketRegion" class="text-primary fw-bold">景點地區</label>
+              <select name="ticketRegion" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketRegion">
                 <option selected>請選擇景點地區</option>
-                <option value="Taipei">台北</option>
-                <option value="Taichung">台中</option>
-                <option value="Kaohsiung">高雄</option>
+                <option value="台北">台北</option>
+                <option value="台中">台中</option>
+                <option value="高雄">高雄</option>
               </select>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <label for="ticketName" class="text-primary fw-bold">套票金額</label>
-              <input type="number" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketName" placeholder="請填寫套票金額">
+              <label for="ticketPrice" class="text-primary fw-bold">套票金額</label>
+              <input type="number" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketPrice" placeholder="請填寫套票金額">
             </div>
             <div class="d-flex justify-content-between align-items-center mb-4">
               <label for="ticketNum" class="text-primary fw-bold">套票組數</label>
@@ -47,12 +47,12 @@ current: index
               <input type="number" class="addticket-input border-bottom border-primary col-9 py-2 px-3" id="ticketStar" placeholder="請填寫套票星級">
             </div>
             <div class="d-flex justify-content-between mb-6">
-              <label for="ticketDes" class="text-primary fw-bold mt-2">套票描述</label>
-              <textarea class="addticket-input border-bottom border-primary col-9 py-2 px-3" name="ticketDes" id="ticketDes" cols="10" rows="4" placeholder="請填寫套票描述(限定100字)"></textarea>
+              <label for="ticketDescription" class="text-primary fw-bold mt-2">套票描述</label>
+              <textarea class="addticket-input border-bottom border-primary col-9 py-2 px-3" name="ticketDescription" id="ticketDescription" cols="10" rows="4" placeholder="請填寫套票描述(限定100字)"></textarea>
             </div>
           </div>
           <div class="d-flex">
-            <a href="#" class="btn btn-primary btn-add-size ms-auto">新增套票</a>
+            <input type="button" value="新增套票" id="addTicketBtn" class="btn btn-primary btn-add-size ms-auto">
           </div>
         </form>
       </div>
