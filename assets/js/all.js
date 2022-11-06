@@ -60,10 +60,10 @@ function updateData(information) {
 var searchNum = document.querySelector(".search-num");
 var card = document.querySelector(".search-place");
 var searchDataNum = document.querySelector(".search-text");
-var searchSelection = document.querySelector("#searchPlace");
-var str = ""; //預設載入、渲染幾筆資料
+var searchSelection = document.querySelector("#searchPlace"); //預設載入、渲染幾筆資料
 
 function renderCard(renderData) {
+  var str = "";
   renderData.forEach(function (item) {
     var cardContent = "<div class=\"col-lg-4 mb-8\">\n    <div class=\"card shadow d-flex flex-column h-100\">\n      <div class=\"search-picture position-relative\">\n        <div class=\"place-icon bg-secondary text-white rounded-end position-absolute py-2 px-5\">".concat(item.area, "</div>\n        <div class=\"place-rate bg-primary text-white rounded-end position-absolute py-1 px-2\">").concat(item.rate, "</div>\n        <a href=\"#\" class=\"d-block overflow-hidden\"><img src=\"").concat(item.imgUrl, "\" class=\"card-img-top  object-fix-cover\" alt=\"travel_1.png\"></a>\n      </div>\n        <div class=\"card-body d-flex flex-column\">\n          <h2 class=\"card-title fw-bold text-primary border-bottom border-2 border-primary pb-1 mb-4\"><a href=\"#\" class=\"text-decoration-none\">").concat(item.name, "</a></h2>\n          <p class=\"card-text text-gray\">").concat(item.description, "</p>\n          <div class=\"d-flex justify-content-between align-items-center mt-auto\">\n            <div class=\"text-primary fw-bold\"><i class=\"fas fa-exclamation-circle me-1\"></i>\u5269\u4E0B\u6700\u5F8C ").concat(item.group, " \u7D44</div>\n            <div class=\"d-flex align-items-center text-primary fw-bold\">TWD<span class=\"fs-7 ms-1\">").concat(item.price, "</span></div>\n        </div>\n      </div>\n    </div>\n  </div>");
     str += cardContent;
@@ -98,7 +98,6 @@ function research(e) {
 var ticketName = document.querySelector("#ticketName");
 var ticketUrl = document.querySelector("#ticketUrl");
 var ticketRegion = document.querySelector("#ticketRegion");
-console.log(ticketRegion);
 var ticketPrice = document.querySelector("#ticketPrice");
 var ticketNum = document.querySelector("#ticketNum");
 var ticketStar = document.querySelector("#ticketStar");
@@ -120,9 +119,10 @@ function addData() {
   obj.price = ticketPrice.value;
   obj.rate = ticketStar.value; // console.log(obj);
 
-  data.push(obj); // renderCard(data);
-
-  obj = {};
+  data.push(obj);
+  var form = document.querySelector(".addticket-form");
+  form.reset();
+  renderCard(data);
 }
 
 addTicketBtn.addEventListener("click", function (e) {
