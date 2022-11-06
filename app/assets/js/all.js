@@ -64,10 +64,11 @@ const card = document.querySelector(".search-place");
 const searchDataNum = document.querySelector(".search-text")
 const searchSelection = document.querySelector("#searchPlace");
 
-let str="";
+
 
 //預設載入、渲染幾筆資料
 function renderCard(renderData){
+  let str="";
   renderData.forEach(item=>{
     let cardContent = `<div class="col-lg-4 mb-8">
     <div class="card shadow d-flex flex-column h-100">
@@ -123,8 +124,6 @@ const ticketUrl = document.querySelector("#ticketUrl");
 
 const ticketRegion = document.querySelector("#ticketRegion");
 
-console.log(ticketRegion);
-
 const ticketPrice = document.querySelector("#ticketPrice");
 
 const ticketNum = document.querySelector("#ticketNum");
@@ -151,8 +150,9 @@ function addData(){
   obj.rate = ticketStar.value;
   // console.log(obj);
   data.push(obj);
-  // renderCard(data);
-  obj={};
+  const form = document.querySelector(".addticket-form");
+  form.reset();
+  renderCard(data)
 }
 
 
