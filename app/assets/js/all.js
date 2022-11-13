@@ -67,42 +67,35 @@ function sortObjNum(){
     if(!totalAreaObj[item.area]){
       totalAreaObj[item.area] = 1;
     }else{
-      totalAreaObj[item.area] += 1;
+      totalAreaObj[item.area] +=1;
     }
   })
-  // console.log(totalAreaObj) {高雄: 1, 台北: 1, 台中: 1}
+  // console.log(totalAreaObj);
 
-  //轉換成C3能讀取的陣列[]
-  const arrayData = Object.entries(totalAreaObj);
-  // console.log(arrayData);[['高雄', 1],['台北', 1],['台中',1]]
+  let newData = Object.entries(totalAreaObj);
+  // console.log(newData);
 
-  // console.log(arrayData.sort((a,b)=>{a-b}))想試著排列，但目前無法Q
-
-  let chart = c3.generate({
-    bindto: '#chart', // HTML 元素綁定
+  const chart = c3.generate({
+    bindto: "#chart",
     data: {
-      columns: arrayData, // 資料存放
-      type: "donut",
+      columns: newData,
+      type : 'donut',
       colors:{
-        "高雄":"#E68618",
-        "台中":"#5151D3",
-        "台北":"#26BFC7"
-      }
-    },
-    donut:{
-      title:"套票地區比重"
+                "高雄":"#E68618",
+                "台中":"#5151D3",
+                "台北":"#26BFC7"
+              }
+            },
+    donut: {
+      title: "套票地區比重"
     }
   });
 }
-
-  
 
 const searchNum = document.querySelector(".search-num");
 const card = document.querySelector(".search-place");
 const searchDataNum = document.querySelector(".search-text")
 const searchSelection = document.querySelector("#searchPlace");
-
-
 
 //預設載入、渲染幾筆資料
 function renderCard(renderData){
@@ -190,7 +183,7 @@ function addData(){
   const form = document.querySelector(".addticket-form");
   form.reset();
   sortObjNum();
-  renderCard(data)
+  renderCard(data);
 }
 
 
@@ -198,6 +191,3 @@ addTicketBtn.addEventListener("click", (e) =>{
   // console.log(ticketName.value);
   addData();
 })
-
-
-
