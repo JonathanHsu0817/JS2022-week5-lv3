@@ -40,6 +40,8 @@ axios.get("https://raw.githubusercontent.com/hexschool/js-training/main/travelAp
   .then(function(response){
     // console.log(response.data.data);
     updateData(response.data.data);
+    // console.log(data)
+    sortObjNum();
     renderCard(data);
   });
 
@@ -58,6 +60,42 @@ function updateData(information){
     data.push(obj);
   })
 }
+
+function sortObjNum(){
+  let totalAreaObj = {};
+  data.forEach(item=>{
+    if(!totalAreaObj[item.area]){
+      totalAreaObj[item.area] = 1;
+    }else{
+      totalAreaObj[item.area] += 1;
+    }
+  })
+  // console.log(totalAreaObj) {高雄: 1, 台北: 1, 台中: 1}
+
+  //轉換成C3能讀取的陣列[]
+  const arrayData = Object.entries(totalAreaObj);
+  // console.log(arrayData);[['高雄', 1],['台北', 1],['台中',1]]
+
+  // console.log(arrayData.sort((a,b)=>{a-b}))想試著排列，但目前無法Q
+
+  let chart = c3.generate({
+    bindto: '#chart', // HTML 元素綁定
+    data: {
+      columns: arrayData, // 資料存放
+      type: "donut",
+      colors:{
+        "高雄":"#E68618",
+        "台中":"#5151D3",
+        "台北":"#26BFC7"
+      }
+    },
+    donut:{
+      title:"套票地區比重"
+    }
+  });
+}
+
+  
 
 const searchNum = document.querySelector(".search-num");
 const card = document.querySelector(".search-place");
@@ -99,8 +137,8 @@ renderCard(data);
 searchSelection.addEventListener('change',research);
 
 function research(e){
-  // console.log(e.target.value);
-  str="";
+  console.log(e.target.value);
+  let str="";
   if(e.target.value === "地區搜尋"){
     renderCard(data);
   }else {
@@ -115,9 +153,7 @@ function research(e){
   }
 }
 
-
-
-//新增邏輯
+//新增卡片邏輯
 const ticketName = document.querySelector("#ticketName");
 
 const ticketUrl = document.querySelector("#ticketUrl"); 
@@ -134,12 +170,13 @@ const ticketDescription = document.querySelector("#ticketDescription");
 
 const addTicketBtn = document.querySelector("#addTicketBtn");
 
-let obj = {};
+
 
 function addData(){
   if(!ticketName.value||!ticketUrl.value||!ticketUrl.value||ticketRegion.value==="請選擇景點地區"||!ticketDescription.value||!ticketNum||!ticketPrice||!ticketStar){
     return alert("請不要留空格");
   }
+  let obj = {};
   obj.id= data.length;
   obj.name = ticketName.value;
   obj.imgUrl = ticketUrl.value;
@@ -152,6 +189,7 @@ function addData(){
   data.push(obj);
   const form = document.querySelector(".addticket-form");
   form.reset();
+  sortObjNum();
   renderCard(data)
 }
 
@@ -160,4 +198,6 @@ addTicketBtn.addEventListener("click", (e) =>{
   // console.log(ticketName.value);
   addData();
 })
+
+
 
