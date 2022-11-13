@@ -37,7 +37,9 @@
 var data = [];
 axios.get("https://raw.githubusercontent.com/hexschool/js-training/main/travelApi.json").then(function (response) {
   // console.log(response.data.data);
-  updateData(response.data.data);
+  updateData(response.data.data); // console.log(data)
+
+  sortObjNum();
   renderCard(data);
 });
 
@@ -54,6 +56,39 @@ function updateData(information) {
     obj.rate = item.rate; // console.log(obj);
 
     data.push(obj);
+  });
+}
+
+function sortObjNum() {
+  var totalAreaObj = {};
+  data.forEach(function (item) {
+    if (!totalAreaObj[item.area]) {
+      totalAreaObj[item.area] = 1;
+    } else {
+      totalAreaObj[item.area] += 1;
+    }
+  }); // console.log(totalAreaObj) {高雄: 1, 台北: 1, 台中: 1}
+  //轉換成C3能讀取的陣列[]
+
+  var arrayData = Object.entries(totalAreaObj); // console.log(arrayData);[['高雄', 1],['台北', 1],['台中',1]]
+  // console.log(arrayData.sort((a,b)=>{a-b}))想試著排列，但目前無法Q
+
+  var chart = c3.generate({
+    bindto: '#chart',
+    // HTML 元素綁定
+    data: {
+      columns: arrayData,
+      // 資料存放
+      type: "donut",
+      colors: {
+        "高雄": "#E68618",
+        "台中": "#5151D3",
+        "台北": "#26BFC7"
+      }
+    },
+    donut: {
+      title: "套票地區比重"
+    }
   });
 }
 
@@ -77,8 +112,8 @@ renderCard(data); //篩選器邏輯
 searchSelection.addEventListener('change', research);
 
 function research(e) {
-  // console.log(e.target.value);
-  str = "";
+  console.log(e.target.value);
+  var str = "";
 
   if (e.target.value === "地區搜尋") {
     renderCard(data);
@@ -92,7 +127,7 @@ function research(e) {
 
     renderCard(tempData);
   }
-} //新增邏輯
+} //新增卡片邏輯
 
 
 var ticketName = document.querySelector("#ticketName");
@@ -103,13 +138,13 @@ var ticketNum = document.querySelector("#ticketNum");
 var ticketStar = document.querySelector("#ticketStar");
 var ticketDescription = document.querySelector("#ticketDescription");
 var addTicketBtn = document.querySelector("#addTicketBtn");
-var obj = {};
 
 function addData() {
   if (!ticketName.value || !ticketUrl.value || !ticketUrl.value || ticketRegion.value === "請選擇景點地區" || !ticketDescription.value || !ticketNum || !ticketPrice || !ticketStar) {
     return alert("請不要留空格");
   }
 
+  var obj = {};
   obj.id = data.length;
   obj.name = ticketName.value;
   obj.imgUrl = ticketUrl.value;
@@ -122,6 +157,7 @@ function addData() {
   data.push(obj);
   var form = document.querySelector(".addticket-form");
   form.reset();
+  sortObjNum();
   renderCard(data);
 }
 
