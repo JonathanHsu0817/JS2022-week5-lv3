@@ -67,19 +67,15 @@ function sortObjNum() {
     } else {
       totalAreaObj[item.area] += 1;
     }
-  }); // console.log(totalAreaObj) {高雄: 1, 台北: 1, 台中: 1}
-  //轉換成C3能讀取的陣列[]
+  }); // console.log(totalAreaObj);
 
-  var arrayData = Object.entries(totalAreaObj); // console.log(arrayData);[['高雄', 1],['台北', 1],['台中',1]]
-  // console.log(arrayData.sort((a,b)=>{a-b}))想試著排列，但目前無法Q
+  var newData = Object.entries(totalAreaObj); // console.log(newData);
 
   var chart = c3.generate({
-    bindto: '#chart',
-    // HTML 元素綁定
+    bindto: "#chart",
     data: {
-      columns: arrayData,
-      // 資料存放
-      type: "donut",
+      columns: newData,
+      type: 'donut',
       colors: {
         "高雄": "#E68618",
         "台中": "#5151D3",
